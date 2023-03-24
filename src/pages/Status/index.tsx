@@ -5,6 +5,8 @@ import Header from '../../components/Header';
 import Separator from '../../components/Separator';
 import Tweet from '../../components/Tweet';
 
+import { PaperPlaneRight } from 'phosphor-react';
+
 import { TweetType } from '../../interfaces';
 
 import './index.css';
@@ -86,9 +88,13 @@ export default function Status(props: StatusPropsType) {
             onChange={setNewAnswer}
             value={newAnswer}
             onKeyDown={handleHotkeySubmit}
+            placeholder='Tweet your answer'
           />
         </label>
-        <button type='submit'>Answer</button>
+        <button type='submit'>
+          <PaperPlaneRight />
+          <span>Answer</span>
+        </button>
       </form>
 
       {answers.map((answer) => {

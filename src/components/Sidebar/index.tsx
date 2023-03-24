@@ -9,6 +9,7 @@ import {
   FileText,
   User,
   DotsThreeCircle,
+  Pencil,
 } from 'phosphor-react';
 
 import twitterLogo from '../../assets/logo-twitter.svg';
@@ -26,39 +27,40 @@ export default function Sidebar(props: SidebarPropsType) {
       <nav className='main-navigation'>
         <NavLink to='/' className='nav-item'>
           <House weight='fill' />
-          Home
+          <span>Home</span>
         </NavLink>
         <a href='#' className='nav-item'>
           <Hash />
-          Explore
+          <span>Explore</span>
         </a>
         <a href='#' className='nav-item'>
           <Bell />
-          Notifications
+          <span>Notifications</span>
         </a>
         <a href='#' className='nav-item'>
           <Envelope />
-          Messages
+          <span>Messages</span>
         </a>
         <a href='#' className='nav-item'>
           <BookmarkSimple />
-          Bookmarks
+          <span>Bookmarks</span>
         </a>
         <a href='#' className='nav-item'>
           <FileText />
-          Lists
+          <span>Lists</span>
         </a>
         <a href='#' className='nav-item'>
           <User />
-          Profile
+          <span>Profile</span>
         </a>
         <a href='#' className='nav-item'>
           <DotsThreeCircle />
-          More
+          <span>More</span>
         </a>
       </nav>
       <button className='new-tweet-button' type='button'>
-        Tweet
+        <Pencil />
+        <span>Tweet</span>
       </button>
     </aside>
   );

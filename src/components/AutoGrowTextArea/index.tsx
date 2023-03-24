@@ -56,6 +56,7 @@ export default function AutoGrowTextArea(
           props?.onKeyDown(e)
         }
         value={props.value ?? ''}
+        placeholder={props.placeholder ?? ''}
       />
     </div>
   );

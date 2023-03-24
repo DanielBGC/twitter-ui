@@ -52,3 +52,28 @@
 .status .answer-tweet-form button[type=submit]:hover {
   filter: brightness(0.9);
 }
+
+.status .answer-tweet-form button[type=submit] svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: none;
+}
+
+
+@media (max-width: 780px) {
+
+  .status .answer-tweet-form textarea {
+    font-size: 1rem;
+  }
+
+  .status .answer-tweet-form button[type=submit] {
+    padding: 0.75rem;
+  }
+  .status .answer-tweet-form button[type=submit] svg {
+    display: block;
+  }
+
+  .status .answer-tweet-form button[type=submit] span {
+    display: none;
+  }
+}
