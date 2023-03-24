@@ -1,35 +1,89 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/global.css';
+import './styles/layout.css';
+
+import twitterLogo from './assets/logo-twitter.svg';
+
+import {
+  House,
+  Hash,
+  Bell,
+  Envelope,
+  BookmarkSimple,
+  FileText,
+  User,
+  DotsThreeCircle,
+  Sparkle,
+} from 'phosphor-react';
+
+import Tweet from './components/Tweet';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className='layout'>
+      <aside className='sidebar'>
+        <img className='logo' src={twitterLogo} alt='Logo' />
+        <nav className='main-navigation'>
+          <a href='' className='nav-item active'>
+            <House weight='fill' />
+            Home
+          </a>
+          <a href='' className='nav-item'>
+            <Hash />
+            Explore
+          </a>
+          <a href='' className='nav-item'>
+            <Bell />
+            Notifications
+          </a>
+          <a href='' className='nav-item'>
+            <Envelope />
+            Messages
+          </a>
+          <a href='' className='nav-item'>
+            <BookmarkSimple />
+            Bookmarks
+          </a>
+          <a href='' className='nav-item'>
+            <FileText />
+            Lists
+          </a>
+          <a href='' className='nav-item'>
+            <User />
+            Profile
+          </a>
+          <a href='' className='nav-item'>
+            <DotsThreeCircle />
+            More
+          </a>
+        </nav>
+        <button className='new-tweet-button' type='button'>
+          Tweet
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      </aside>
+      <div className='content'>
+        <main className='timeline'>
+          <div className='timeline-header'>
+            Home
+            <Sparkle />
+          </div>
+
+          <form className='new-tweet-form'>
+            <label htmlFor='tweet'>
+              <img src='https://github.com/danielbgc.png' alt='DanielBGC' />
+              <textarea id='tweet' placeholder="What's happening?"></textarea>
+            </label>
+            <button type='submit'>Tweet</button>
+          </form>
+          <div className='separator' />
+
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+        </main>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
