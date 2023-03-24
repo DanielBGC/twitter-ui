@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   TextareaHTMLAttributes,
+  KeyboardEvent,
 } from 'react';
 
 import './index.css';
@@ -51,6 +52,9 @@ export default function AutoGrowTextArea(
           width: '100%',
         }}
         onChange={(e) => onChangeHandler(e)}
+        onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) =>
+          props?.onKeyDown(e)
+        }
         value={props.value ?? ''}
       />
     </div>

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, KeyboardEvent, useState } from 'react';
 import './index.css';
 
 /* Components */
@@ -26,14 +26,20 @@ export default function Timeline(props: TimelinePropsType) {
 
   const [tweets, setTweets] = useState<TweetType[]>(initialTweets);
 
+  const getLastTweetId = () => {
+    const idArray = tweets.map((tweet) => tweet.id);
+
+    const lastTweetId = idArray.sort((a, b): any => {
+      return b - a;
+    })[0];
+
+    return lastTweetId;
+  };
+
   const handleNewTweet = (event: FormEvent) => {
     event.preventDefault();
 
-    const idArray = tweets.map((tweet) => tweet.id);
-
-    let lastTweetId = idArray.sort((a, b): any => {
-      return b - a;
-    })[0];
+    let lastTweetId = getLastTweetId();
 
     setTweets([
       {
@@ -46,6 +52,23 @@ export default function Timeline(props: TimelinePropsType) {
     setNewTweet('');
   };
 
+  const handleHotkeySubmit = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+      // Ctrl + Enter
+      let lastTweetId = getLastTweetId();
+
+      setTweets([
+        {
+          id: (lastTweetId += 1),
+          content: newTweet,
+        },
+        ...tweets,
+      ]);
+
+      setNewTweet('');
+    }
+  };
+
   return (
     <main className='timeline'>
       <Header title='Home' />
@@ -56,8 +79,9 @@ export default function Timeline(props: TimelinePropsType) {
           <textarea
             id='tweet'
             placeholder="What's happening?"
-            onChange={(event) => setNewTweet(event.target.value)}
             value={newTweet}
+            onChange={(event) => setNewTweet(event.target.value)}
+            onKeyDown={handleHotkeySubmit}
           ></textarea>
         </label>
         <button type='submit'>Tweet</button>

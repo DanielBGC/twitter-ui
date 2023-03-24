@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, KeyboardEvent, useState } from 'react';
 
 import AutoGrowTextArea from '../../components/AutoGrowTextArea';
 import Header from '../../components/Header';
@@ -22,24 +22,47 @@ export default function Status(props: StatusPropsType) {
 
   const [answers, setAnswers] = useState<TweetType[]>(initialAnswers);
 
-  const handleNewAnswer = (event: FormEvent) => {
-    event.preventDefault();
-
+  const getLastAnswerId = () => {
     const idArray = answers.map((answer) => answer.id);
 
-    let lastTweetId = idArray.sort((a, b): any => {
+    const lastAnswerId = idArray.sort((a, b): any => {
       return b - a;
     })[0];
 
+    return lastAnswerId;
+  };
+
+  const handleNewAnswer = (event: FormEvent) => {
+    event.preventDefault();
+
+    let lastAnswerId = getLastAnswerId();
+
     setAnswers([
       {
-        id: (lastTweetId += 1),
+        id: (lastAnswerId += 1),
         content: newAnswer,
       },
       ...answers,
     ]);
 
     setNewAnswer('');
+  };
+
+  const handleHotkeySubmit = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+      // Ctrl + Enter
+      let lastAnswerId = getLastAnswerId();
+
+      setAnswers([
+        {
+          id: (lastAnswerId += 1),
+          content: newAnswer,
+        },
+        ...answers,
+      ]);
+
+      setNewAnswer('');
+    }
   };
 
   return (
@@ -59,7 +82,11 @@ export default function Status(props: StatusPropsType) {
           <img src='https://github.com/danielbgc.png' alt='DanielBGC' />
           {/* <textarea id='tweet' placeholder='Tweet your answer'></textarea> */}
 
-          <AutoGrowTextArea onChange={setNewAnswer} value={newAnswer} />
+          <AutoGrowTextArea
+            onChange={setNewAnswer}
+            value={newAnswer}
+            onKeyDown={handleHotkeySubmit}
+          />
         </label>
         <button type='submit'>Answer</button>
       </form>
