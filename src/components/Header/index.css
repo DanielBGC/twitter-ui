@@ -1,4 +1,4 @@
-.timeline .timeline-header {
+.header {
   padding: 1.5rem 1.25rem;
   display: flex;
   align-items: center;
@@ -8,7 +8,7 @@
   border-bottom: 1px solid #ebeef0;
 }
 
-.timeline .timeline-header svg {
+.header svg {
   width: 1.5rem;
   height: 1.5rem;
   color: var(--twitter-blue);

@@ -1,4 +1,4 @@
-import twitterLogo from '../../assets/logo-twitter.svg';
+import { NavLink } from 'react-router-dom';
 
 import {
   House,
@@ -11,6 +11,8 @@ import {
   DotsThreeCircle,
 } from 'phosphor-react';
 
+import twitterLogo from '../../assets/logo-twitter.svg';
+
 import './index.css';
 
 type SidebarPropsType = {};
@@ -20,10 +22,10 @@ export default function Sidebar(props: SidebarPropsType) {
     <aside className='sidebar'>
       <img className='logo' src={twitterLogo} alt='Logo' />
       <nav className='main-navigation'>
-        <a href='' className='nav-item active'>
+        <NavLink to='/' className='nav-item'>
           <House weight='fill' />
           Home
-        </a>
+        </NavLink>
         <a href='' className='nav-item'>
           <Hash />
           Explore

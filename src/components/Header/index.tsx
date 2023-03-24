@@ -8,7 +8,7 @@ type HeaderPropsType = {
 
 export default function Header(props: HeaderPropsType) {
   return (
-    <div className='timeline-header'>
+    <div className='header'>
       {props.title}
       <Sparkle />
     </div>
