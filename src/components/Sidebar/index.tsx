@@ -20,37 +20,39 @@ type SidebarPropsType = {};
 export default function Sidebar(props: SidebarPropsType) {
   return (
     <aside className='sidebar'>
-      <img className='logo' src={twitterLogo} alt='Logo' />
+      <NavLink to='/' className='nav-item'>
+        <img className='logo' src={twitterLogo} alt='Logo' />
+      </NavLink>
       <nav className='main-navigation'>
         <NavLink to='/' className='nav-item'>
           <House weight='fill' />
           Home
         </NavLink>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <Hash />
           Explore
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <Bell />
           Notifications
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <Envelope />
           Messages
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <BookmarkSimple />
           Bookmarks
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <FileText />
           Lists
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <User />
           Profile
         </a>
-        <a href='' className='nav-item'>
+        <a href='#' className='nav-item'>
           <DotsThreeCircle />
           More
         </a>

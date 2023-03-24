@@ -10,7 +10,8 @@ import './index.css';
 type AutoGrowTextAreaPropsType = {};
 
 export default function AutoGrowTextArea(
-  props: TextareaHTMLAttributes<HTMLTextAreaElement>
+  // props: TextareaHTMLAttributes<HTMLTextAreaElement>
+  props: any
 ) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [text, setText] = useState('');
@@ -30,9 +31,7 @@ export default function AutoGrowTextArea(
       setTextAreaHeight('auto');
     }
 
-    if (props.onChange) {
-      props.onChange(event);
-    }
+    props?.onChange(event.target.value);
   };
 
   return (
@@ -51,7 +50,8 @@ export default function AutoGrowTextArea(
           flex: 1,
           width: '100%',
         }}
-        onChange={onChangeHandler}
+        onChange={(e) => onChangeHandler(e)}
+        value={props.value ?? ''}
       />
     </div>
   );
