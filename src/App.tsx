@@ -7,6 +7,12 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Separator from './components/Separator';
 
+const tweets = [
+  { id: 1, content: 'My first tweet' },
+  { id: 2, content: 'Hello World' },
+  { id: 3, content: 'Creating an application with vite' },
+];
+
 function App() {
   return (
     <div className='layout'>
@@ -24,8 +30,9 @@ function App() {
           </form>
           <Separator />
 
-          <Tweet />
-          <Tweet />
+          {tweets.map((tweet) => {
+            return <Tweet key={tweet.id} content={tweet.content} />;
+          })}
         </main>
       </div>
     </div>
